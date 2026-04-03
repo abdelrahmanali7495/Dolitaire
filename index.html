@@ -33,7 +33,7 @@
 body.mode-small {
   --cw: 64px;   /* كروت الأرض أكبر */
   --ch: 103px;
-  --peek: 15px;
+  --peek: 10px;
 }
 
 /* gap أضيق قليلاً مع الكروت الكبيرة */
@@ -62,14 +62,14 @@ body{background:var(--darker);font-family:'Cairo',sans-serif;color:var(--text);
 .logo-main{font-family:'Cinzel Decorative',serif;font-size:clamp(20px,4.5vw,44px);color:var(--gold);text-shadow:var(--glow-gold),0 3px 8px rgba(0,0,0,.9);}
 .logo-line{width:180px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:11px auto;}
 .logo-sub{font-size:11px;color:#fff1a2;letter-spacing:4px;text-transform:uppercase;}
-.menu-box{background:linear-gradient(145deg,rgba(22,22,38,.97),rgba(8,8,14,.50));border:1px solid rgba(255,215,0,.18);border-radius:16px;padding:24px 28px;width:100%;max-width:350px;box-shadow:0 24px 64px rgba(0,0,0,.65);}
-.sec-lbl{text-align:center;font-size:11px;color:var(--gold);letter-spacing:4px;text-transform:uppercase;margin-bottom:14px;opacity:.75;}
+.menu-box{background:linear-gradient(145deg,rgba(22,22,38,.97),rgba(8,8,14,.50));border:1px solid rgba(216 25 253 / 23%);border-radius:16px;padding:24px 28px;width:100%;max-width:350px;box-shadow:0 24px 64px rgba(0,0,0,.65);}
+.sec-lbl{text-align:center;font-size:11px;color:#ffffff;letter-spacing:4px;text-transform:uppercase;margin-bottom:14px;opacity:.75;}
 .mbtn{width:100%;padding:13px 15px;margin-bottom:8px;border:none;border-radius:10px;cursor:pointer;font-family:'Cairo',sans-serif;font-size:15px;font-weight:700;display:flex;align-items:center;gap:11px;transition:all .22s;position:relative;overflow:hidden;}
 .mbtn::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.06);transform:translateX(-100%);transition:transform .28s}
 .mbtn:hover::before,.mbtn:active::before{transform:translateX(0)}.mbtn:hover{transform:translateY(-2px)}
-.mbtn-solo{background:linear-gradient(135deg, rgb(191 170 190), #040400);border:1px solid rgb(255 255 255 / 35%);color:#ffffff}
+.mbtn-solo{background:linear-gradient(135deg, rgb(148 88 150), #3b2757);border:1px solid rgb(255 255 255 / 35%);color:#ffffff}
 .mbtn-solo:hover{border-color:rgba(39,174,96,.75);box-shadow:0 0 18px rgba(39,174,96,.2)}
-.mbtn-local{background:linear-gradient(135deg, #613877, #000000);border:1px solid rgb(250 253 255 / 35%);color:#ffffff}
+.mbtn-local{background:linear-gradient(135deg, rgb(148 88 150), #3b2757);border:1px solid rgb(250 253 255 / 35%);color:#ffffff}
 .mbtn-local:hover{border-color:rgba(41,128,185,.75);box-shadow:0 0 18px rgba(41,128,185,.2)}
 .mbtn-online{background:linear-gradient(135deg, #9c5c9b, #362454);border:1px solid rgb(255 248 248 / 35%);color:#ffffff}
 .mbtn-online:hover{border-color:rgba(200,50,50,.75);box-shadow:0 0 18px rgba(200,50,50,.2)}
@@ -97,8 +97,8 @@ hr.div{border:none;border-top:1px solid rgba(255,215,0,.09);margin:12px 0}
 
 /* ─── ONLINE ─── */
 #online-screen{align-items:center;justify-content:center;overflow-y:auto;}
-.setup-box{background:linear-gradient(145deg,rgba(22,22,38,.97),rgba(8,8,14,.99));border:1px solid rgba(255,215,0,.18);border-radius:16px;padding:26px 24px;width:100%;max-width:400px;box-shadow:0 24px 64px rgba(0,0,0,.65);margin:16px;}
-.setup-title{font-family:'Cinzel Decorative',serif;font-size:16px;color:var(--gold);text-align:center;margin-bottom:18px;}
+.setup-box{background:linear-gradient(145deg,rgba(22,22,38,.97),rgba(8,8,14,.99));border:1px solid rgba(178 0 255 / 18%);border-radius:16px;padding:26px 24px;width:100%;max-width:400px;box-shadow:0 24px 64px rgba(0,0,0,.65);margin:16px;}
+.setup-title{font-family:'Cinzel Decorative',serif;font-size:16px;color:#ffffff;text-align:center;margin-bottom:18px;}
 .online-btns{display:flex;gap:8px;margin-bottom:14px;}
 .obtn{flex:1;padding:14px 8px;border:none;border-radius:10px;cursor:pointer;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:5px;transition:all .22s;}
 .obtn-ico{font-size:24px;}
@@ -991,7 +991,7 @@ body.mode-small .stacks-row {
       <div class="status" id="st-join"></div>
       <button class="abtn abtn-dim" onclick="backToOnlineChoice()" style="margin-top:8px">← رجوع</button>
     </div>
-    <button class="abtn abtn-dim" onclick="showMenu()" style="margin-top:8px;opacity:.6">↩ القائمة الرئيسية</button>
+    <button class="abtn abtn-dim" onclick="showMenu()" style="margin-top:8px;opacity:.6;color: white">↩ القائمة الرئيسية</button>
   </div>
 </div>
 
@@ -1240,7 +1240,8 @@ const CARD_IMAGES = {
 /* ┌──────────────────────────────────────────────────┐
    │  ظهر الكرت — ضع رابط صورة ظهر الكرت هنا        │
    └──────────────────────────────────────────────────┘ */
-const CARD_BACK_IMAGE = "https://i.postimg.cc/65tFW5mF/الظهر.png";
+const CARD_BACK_IMAGE = "https://i.postimg.cc/tCmT0jvm/ظهر_جديد.png";
+const CARD_BACK_PILE  = "https://i.postimg.cc/ncwz8JSR/سيشش.png";  // ← حط هنا URL صورة الأعمدة، أو سيبه فاضي للتصميم الأزرق
 
 /* ┌──────────────────────────────────────────────────┐
    │  صورة أشواك الجليد — ضع رابط صورتك هنا         │
@@ -2053,8 +2054,10 @@ function renderHalf(halfId,pIdx){
         dc.className=dcCls;
         if(isFrozen){
           dc.innerHTML=`<div class="freeze-count">❄️${frozenTurns}</div>`;
-        } else if(back){
-          dc.style.backgroundImage=`url('${back}')`;dc.style.backgroundSize='cover';dc.style.backgroundPosition='center';
+        } else if(CARD_BACK_PILE && CARD_BACK_PILE.trim()){
+  dc.style.backgroundImage=`url('${CARD_BACK_PILE}')`;
+  dc.style.backgroundSize='cover';
+  dc.style.backgroundPosition='center';
         } else {
           dc.innerHTML='<div class="back-pattern"></div>';
         }
