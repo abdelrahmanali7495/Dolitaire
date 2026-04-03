@@ -1967,7 +1967,7 @@ function renderHalf(halfId,pIdx){
     const cnt=stack.length;
     const frozenTurns=p.frozenSlots[si]||0;
     const isFrozen=frozenTurns>0;
-    const maxPeek=(G.boardCols||8)<=6?5:9;
+    const maxPeek=(G.boardCols||8)<=6?7:9;
     const nPeek=Math.min(Math.max(0,cnt-1),maxPeek);
     // ارتفاع ثابت دايماً بأقصى قدر (مش بيتغير لما تقل الكروت)
     const maxPileH=ch+maxPeek*pk;
