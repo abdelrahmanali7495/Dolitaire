@@ -2875,8 +2875,9 @@ function onBoardPickClick(pIdx, si){
 
   if(mode==='burning_sun_pick'){
     if(pIdx!==bPIdx) return;
+    const _bsCost=_boardPickMode.ab.cost;
     _boardPickMode=null;
-    execAbility(bPIdx,sc,'burning_sun',0,{si}); // cost اتخصم مسبقاً
+    execAbility(bPIdx,sc,'burning_sun',0,{si,originalCost:_bsCost}); // cost اتخصم مسبقاً
     return;
   }
   if(mode==='mine_pick_self'){
@@ -3105,7 +3106,7 @@ function onDeckClick(pIdx){
 }
 
 /* تنفيذ الانتقال للدور التالي — نفس الكود للي بيرسل وللي بيستقبل */
-function doNextTurn(nextTurnIdx, nextCard){
+function doNextTurn(nextTurnIdx, nextCard, isStunSkip){
   const prevTurnIdx = G.turn;
   const prevP = G.players[prevTurnIdx];
   tickFreezeCounters(prevP);
@@ -3117,9 +3118,12 @@ function doNextTurn(nextTurnIdx, nextCard){
   const nextHalfId = halfIdOf(nextTurnIdx);
 
   // الخطوة 1: flip-out على half اللاعب السابق (بيختفي كرته / فراغه)
-  const prevHalf = document.getElementById(prevHalfId);
-  const prevHandEl = prevHalf?.querySelector('.hand-card,.hand-empty');
-  if(prevHandEl) prevHandEl.classList.add('hand-card-out');
+  // نتخطى لو إحنا جوا stun skip loop عشان متعملش double animation
+  if(!isStunSkip){
+    const prevHalf = document.getElementById(prevHalfId);
+    const prevHandEl = prevHalf?.querySelector('.hand-card,.hand-empty');
+    if(prevHandEl) prevHandEl.classList.add('hand-card-out');
+  }
 
   // الخطوة 2: بعد 180ms نحدّث الـ state ونعمل flip-out→in على half اللاعب الجديد
   setTimeout(()=>{
@@ -3136,10 +3140,14 @@ function doNextTurn(nextTurnIdx, nextCard){
         showNotif(`😵 ${p.name} مقيّد — أدوار متبقية: ${p.stunTurns}`);
         const nextT = G.players.length>1 ? 1-G.turn : G.turn;
         const nc = randCard();
-        if(G.pMode==='online') syncDeck(G.turn, nextT, nc);
+        // لا نبعت syncDeck هنا — بنعتمد على state_sync الدوري عشان نتجنب race condition في الـ stun loop
         render();
-        setTimeout(()=>doNextTurn(nextT, nc), 1200);
+        setTimeout(()=>doNextTurn(nextT, nc, true), 1200);
         return;
+      }
+      // الـ stun انتهى تماماً — نبعت sync للاعب التاني عشان يعرف الدور الحقيقي
+      if(G.pMode==='online' && G.myIdx===0){
+        syncDeck(G.turn, G.turn, nextCard);
       }
     }
     // flip-out على half اللاعب الجديد (الكرت القديم إن وُجد) ثم render ثم flip-in
